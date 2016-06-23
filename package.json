@@ -9,8 +9,10 @@
   },
   "scripts": {
     "test": "npm run lint && phantomjs node_modules/mocha-phantomjs-core/mocha-phantomjs-core.js test/index.html dot && make && phantomjs node_modules/mocha-phantomjs-core/mocha-phantomjs-core.js test/index_packaged.html dot",
-    "start": "http-server .",
-    "lint": "eslint js/id test/spec modules"
+    "start": "npm run bundle & npm run serve",
+    "bundle": "rollup -c -w",
+    "lint": "eslint js/id test/spec modules",
+    "serve": "http-server ."
   },
   "repository": {
     "type": "git",
@@ -40,7 +42,9 @@
     "name-suggestion-index": "0.1.1",
     "phantomjs-prebuilt": "2.1.7",
     "request": "~2.16.2",
-    "rollup": "0.31.2",
+    "rollup": "^0.32.2",
+    "rollup-plugin-commonjs": "^3.0.0",
+    "rollup-plugin-node-resolve": "^1.7.0",
     "sinon": "~1.6",
     "sinon-chai": "~2.3.1",
     "smash": "0.0",
